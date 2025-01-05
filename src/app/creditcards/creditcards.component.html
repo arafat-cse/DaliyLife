@@ -1,5 +1,5 @@
-<div style="display: flex; flex-direction: row;">
-    <mat-card class="mat-card count-card">
+<div class="mat-card" style="display: flex; flex-direction: row;">
+    <mat-card class="mat-card count-card bg-success">
         <mat-card-title>
             Num of Cards
         </mat-card-title>
@@ -7,7 +7,7 @@
                 10
         </mat-card-content>
     </mat-card>
-    <mat-card class="mat-card count-card">
+    <mat-card class="mat-card count-card bg-warning">
         <mat-card-title>
             Num of Cards
         </mat-card-title>
@@ -15,7 +15,7 @@
                 10
         </mat-card-content>
     </mat-card>
-    <mat-card class="mat-card count-card">
+    <mat-card class="mat-card count-card bg-info">
         <mat-card-title>
             Num of Cards
         </mat-card-title>
@@ -23,7 +23,7 @@
                 10
         </mat-card-content>
     </mat-card>
-    <mat-card class="mat-card count-card">
+    <mat-card class="mat-card count-card bg-primary">
         <mat-card-title>
             Num of Cards
         </mat-card-title>
@@ -68,7 +68,7 @@
                 <td mat-cell *matCellDef="let element">{{element.bankName}}</td>
             </ng-component>
             <ng-component matColumnDef="maxCredit">
-                <th mat-header-cell *matHeaderCellDef>MaxCredit</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>MaxCredit</th>
                 <td mat-cell *matCellDef="let element">{{element.maxCredit}}</td>
             </ng-component>
             <ng-component matColumnDef="interestRate">
@@ -103,5 +103,9 @@
                 <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
         </table>
+        <mat-paginator [pageSizeOptions]="[5,10,15,20]"
+        showFirstLastButtons>
+    </mat-paginator>
+
     </mat-card-content>
 </mat-card>
