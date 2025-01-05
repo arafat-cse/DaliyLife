@@ -1,0 +1,50 @@
+
+
+<h1>Credit Card Details</h1>
+<ng-container *ngIf="creditCardDetails">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ creditCardDetails.bankName }}</mat-card-title>
+            <mat-card-subtitle>{{ creditCardDetails.description }}</mat-card-subtitle>
+            console.log(this.creditCardDetails);
+            <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" > -->
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+            <p><strong>ID:</strong> {{ creditCardDetails.id }}</p>
+            <p><strong>Bank Name:</strong> {{ creditCardDetails.bankName }}</p>
+            <p><strong>Description:</strong> {{ creditCardDetails.description }}</p>
+            <p><strong>maxCredit:</strong> {{ creditCardDetails.maxCredit }}</p>
+            <p><strong>interestRate:</strong> {{ creditCardDetails.interestRate }}</p>
+            <p><strong>recommendedSc  ore:</strong> {{ creditCardDetails.recommendedScore }}</p>
+            <p><strong>annualFee:</strong> {{ creditCardDetails.annualFee }}</p>
+            <p><strong>termsAndConditions:</strong> {{ creditCardDetails.termsAndConditions }}</p>
+            <p><strong>createDate:</strong> {{ creditCardDetails.createDate }}</p>
+            <p><strong>active:</strong> {{ creditCardDetails.active }}</p>
+           
+        </mat-card-content>
+      </mat-card>
+     
+    </ng-container>
+<!-- 
+    <ng-container *ngIf="creditCardDetails">
+      <p><strong>ID:</strong> {{ creditCardDetails.id }}</p>
+      <p><strong>Bank Name:</strong> {{ creditCardDetails.bankName }}</p>
+      <p><strong>Description:</strong> {{ creditCardDetails.description }}</p>
+      <p><strong>maxCredit:</strong> {{ creditCardDetails.maxCredit }}</p>
+      <p><strong>interestRate:</strong> {{ creditCardDetails.interestRate }}</p>
+      <p><strong>recommendedSc  ore:</strong> {{ creditCardDetails.recommendedScore }}</p>
+      <p><strong>annualFee:</strong> {{ creditCardDetails.annualFee }}</p>
+      <p><strong>termsAndConditions:</strong> {{ creditCardDetails.termsAndConditions }}</p>
+      <p><strong>createDate:</strong> {{ creditCardDetails.createDate }}</p>
+      <p><strong>active:</strong> {{ creditCardDetails.active }}</p>
+
+    </ng-container> -->
+  
+    <!-- If no details found, display a fallback message -->
+    <!-- <ng-container *ngIf="!creditCardDetails">
+      <p>Loading or No details available</p>
+    </ng-container>
+  </mat-card>
+   -->
