@@ -1,0 +1,107 @@
+<div style="display: flex; flex-direction: row;">
+    <mat-card class="mat-card count-card">
+        <mat-card-title>
+            Num of Cards
+        </mat-card-title>
+        <mat-card-content>
+                10
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card count-card">
+        <mat-card-title>
+            Num of Cards
+        </mat-card-title>
+        <mat-card-content>
+                10
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card count-card">
+        <mat-card-title>
+            Num of Cards
+        </mat-card-title>
+        <mat-card-content>
+                10
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card count-card">
+        <mat-card-title>
+            Num of Cards
+        </mat-card-title>
+        <mat-card-content>
+                10
+        </mat-card-content>
+    </mat-card>
+    
+            
+</div>
+
+<mat-card class="mat-card">
+    <mat-card-header>
+        <mat-card-title> List All Credit Cards</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource" matStort>
+            <ng-component matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox></mat-checkbox>
+                </td>
+            </ng-component>
+
+            <ng-component matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-component>
+
+            <ng-component matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-component>
+
+            <ng-component matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let element">{{element.description}}</td>
+            </ng-component>
+
+            <ng-component matColumnDef="bankName">
+                <th mat-header-cell *matHeaderCellDef>BankName</th>
+                <td mat-cell *matCellDef="let element">{{element.bankName}}</td>
+            </ng-component>
+            <ng-component matColumnDef="maxCredit">
+                <th mat-header-cell *matHeaderCellDef>MaxCredit</th>
+                <td mat-cell *matCellDef="let element">{{element.maxCredit}}</td>
+            </ng-component>
+            <ng-component matColumnDef="interestRate">
+                <th mat-header-cell *matHeaderCellDef>InterestRate</th>
+                <td mat-cell *matCellDef="let element">{{element.interestRate}}</td>
+            </ng-component>
+            <ng-component matColumnDef="recommendedScore">
+                <th mat-header-cell *matHeaderCellDef>RecommendedScore</th>
+                <td mat-cell *matCellDef="let element">{{element.recommendedScore}}</td>
+            </ng-component>
+            <ng-component matColumnDef="annualFee">
+                <th mat-header-cell *matHeaderCellDef>AnnualFee</th>
+                <td mat-cell *matCellDef="let element">{{element.annualFee}}</td>
+            </ng-component>
+            <ng-component matColumnDef="termsAndConditions">
+                <th mat-header-cell *matHeaderCellDef>TermsAndConditions</th>
+                <td mat-cell *matCellDef="let element">{{element.termsAndConditions}}</td>
+            </ng-component>
+            <ng-component matColumnDef="createDate">
+                <th mat-header-cell *matHeaderCellDef>CreateDate</th>
+                <td mat-cell *matCellDef="let element">{{element.createDate}}</td>
+            </ng-component>
+            <ng-component matColumnDef="updateDate">
+                <th mat-header-cell *matHeaderCellDef>UpdateDate</th>
+                <td mat-cell *matCellDef="let element">{{element.updateDate}}</td>
+            </ng-component>
+            <ng-component matColumnDef="active">
+                <th mat-header-cell *matHeaderCellDef>Active</th>
+                <td mat-cell *matCellDef="let element">{{element.active}}</td>
+            </ng-component>
+        
+                <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
