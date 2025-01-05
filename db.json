@@ -3,7 +3,7 @@
         {
             "id":1,
             "cardName": "Bank of America - Platinum Card",
-            "bankName": "Bank of America",
+            "bankName": "Bangladesh Bank",
             "description": "Bank of America offers customers with variesty of options",
             "maxCredit": 8000,
             "active": true,

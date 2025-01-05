@@ -10,9 +10,9 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 const routes: Routes = [
   { path: '', component: CreditcardsComponent },
   { path: 'add', component: AddComponent },
-  { path: 'view/id', component: ViewComponent},
-  { path: 'edit/id', component: EditComponent},
-  { path: 'delete', component: DeleteComponent},
+  { path: 'view/:id', component: ViewComponent},
+  { path: 'edit/:id', component: EditComponent},
+  { path: 'delete/:id', component: DeleteComponent},
   { path: '**', component: PageNotFoundComponent}
 
 ];
