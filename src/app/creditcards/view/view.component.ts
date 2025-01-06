@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CreditCard } from '../../models/credit-card';
 import { CreditcardsService } from '../../services/creditcards.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view',
@@ -9,11 +10,18 @@ import { CreditcardsService } from '../../services/creditcards.service';
 })
 export class ViewComponent {
   creditCardDetails!:CreditCard;
-  constructor(private creditCardsServices: CreditcardsService)
+  creditCardId!: number;
+
+
+
+  constructor(private creditCardsServices: CreditcardsService,
+
+  private router:ActivatedRoute )
   {
-    this.creditCardsServices.getCreditCardById(1).subscribe((data:CreditCard)=> {
+   this.creditCardId = parseInt(this.router.snapshot.paramMap.get("id") || '');
+
+    this.creditCardsServices.getCreditCardById(this.creditCardId).subscribe((data:CreditCard)=> {
       this.creditCardDetails = data;
     })
-    console.log(this.creditCardDetails);
   }
 }
