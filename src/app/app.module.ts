@@ -13,6 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatListModule} from '@angular/material/list';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +28,8 @@ import {MatListModule} from '@angular/material/list';
     MatSidenavModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatListModule
-
+    MatListModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,2 +1,94 @@
-<p>add works!</p>
-add new create creditCard
+
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Add new Creadit Card</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #creditCardForm="ngForm" (ngSubmit)= "saveCreditCard()">
+            <div class="form-group">
+                <mat-form-field>
+                    <label>Name</label>
+                    <input matInput placeholder="Enter Credit Card Name"name="name" [(ngModel)]="newCreditCard.name" required minlength="3" maxlength="20">
+                    <mat-error *ngIf="creditCardForm.controls['name']?.touched && creditCardForm.controls['name']?.hasError('required')"> Name is required</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['name']?.touched && creditCardForm.controls['name']?.hasError('minlength')"> Name must have at least 3</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['name']?.touched && creditCardForm.controls['name']?.hasError('maxlength')"> Name must have at max 20</mat-error>
+                </mat-form-field>
+      
+                <mat-form-field>
+                    <label>Bank Name</label>
+                    <input matInput placeholder="Enter Bank Name"name="bankName" [(ngModel)]="newCreditCard.bankName" required minlength="3" maxlength="20">
+                    <mat-error *ngIf="creditCardForm.controls['bankName']?.touched && creditCardForm.controls['bankName']?.hasError('required')"> BankName is required</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['bankName']?.touched && creditCardForm.controls['bankName']?.hasError('minlength')"> BankName must have at least 3</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['bankName']?.touched && creditCardForm.controls['bankName']?.hasError('maxlength')"> BankName must have at max 20</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div class="form-group">
+                <mat-form-field>
+                    <label>Description</label>                  
+                    <textarea matInput placeholder="Enter Description"name="description" [(ngModel)]="newCreditCard.description" required minlength="3" maxlength="50"></textarea>
+                    <mat-error *ngIf="creditCardForm.controls['description']?.touched && creditCardForm.controls['description']?.hasError('required')"> description is required</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['description']?.touched && creditCardForm.controls['description']?.hasError('minlength')"> description must have at least 3</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['description']?.touched && creditCardForm.controls['description']?.hasError('maxlength')"> description must have at max 50</mat-error>
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-form-field>
+                    <label>MaxCredit</label>                  
+                    <input matInput placeholder="Enter maxCredit"name="maxCredit" [(ngModel)]="newCreditCard.maxCredit" required minlength="3" maxlength="50">
+                    <mat-error *ngIf="creditCardForm.controls['maxCredit']?.touched && creditCardForm.controls['maxCredit']?.hasError('required')"> description is required</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['maxCredit']?.touched && creditCardForm.controls['maxCredit']?.hasError('minlength')"> description must have at least 3</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['maxCredit']?.touched && creditCardForm.controls['maxCredit']?.hasError('maxlength')"> description must have at max 50</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                 <label>Interest Rate</label>
+                    <input matInput placeholder="Enter interestRate"name="interestRate" [(ngModel)]="newCreditCard.interestRate" required minlength="3" maxlength="50">
+                    <mat-error *ngIf="creditCardForm.controls['interestRate']?.touched && creditCardForm.controls['interestRate']?.hasError('required')"> interestRate is required</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['interestRate']?.touched && creditCardForm.controls['interestRate']?.hasError('minlength')">interestRate must have at least 3</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['interestRate']?.touched && creditCardForm.controls['interestRate']?.hasError('maxlength')">interestRate must have at max 50</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+               <mat-checkbox name="active" [(ngModel)]="newCreditCard.active" required>Active</mat-checkbox>
+               <mat-error *ngIf="creditCardForm.controls['active']?.touched && creditCardForm.controls['active']?.hasError('required')"></mat-error>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <label>Select recommended Score</label>
+                    <mat-select placeholder="Select Recomment" name="recommendedScore" [(ngModel)]="newCreditCard.recommendedScore">
+                    <mat-option value="100-500">100-500</mat-option>
+                    <mat-option value="300-500">300-500</mat-option>
+                    <mat-option value="200-400">200-400</mat-option>
+                    <mat-option value="400-600">400-600</mat-option>
+                </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <label>annual Fee</label>
+                    <input matInput placeholder="Enter annualFee"name="annualFee" [(ngModel)]="newCreditCard.annualFee" required minlength="3" maxlength="50">
+                    <mat-error *ngIf="creditCardForm.controls['annualFee']?.touched && creditCardForm.controls['annualFee']?.hasError('required')"> interestRate is required</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['annualFee']?.touched && creditCardForm.controls['annualFee']?.hasError('minlength')">interestRate must have at least 3</mat-error>
+                    <mat-error *ngIf="creditCardForm.controls['annualFee']?.touched && creditCardForm.controls['annualFee']?.hasError('maxlength')">interestRate must have at max 50</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+            <mat-form-field>    
+                <mat-label>Choose a date</mat-label>
+                <input matInput required name="createDate" [(ngModel)]="newCreditCard.createDate"[matDatepicker]="createdDatePicker" minlength="3" placeholder="Select">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="createdDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #createdDatePicker></mat-datepicker>
+            </mat-form-field>
+            </div>
+            <div class="form-group">
+                <button mat-raised-button color="primary" [disabled]="!creditCardForm.valid"> Add New Credit Card</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
