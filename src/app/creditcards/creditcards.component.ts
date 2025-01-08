@@ -61,6 +61,9 @@ export class CreditcardsComponent {
   
   creditCards:CreditCard[]=[];
 
+  creditCardMaximumAmount:number = 0;
+  creditCardId:number = 0;
+
   constructor (private creditCardServices: CreditcardsService){
     this.creditCardServices.getCreditCards().subscribe((data:CreditCard[])=>{
       this.creditCards = data;
@@ -69,6 +72,11 @@ export class CreditcardsComponent {
 
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    
+    this.calculateMetrics();
+      this.creditCardMaximumAmount = this.creditCards.filter(card =>card.maxCredit >= 3000).length
+    this.calculateMetrics();
+      this.creditCardId = this.creditCards.filter(cout=>cout.id>=0).length
     })
 
     
@@ -86,5 +94,8 @@ export class CreditcardsComponent {
 
   selectHandler(row: CreditCard){
     this.selection.toggle(row as never);
+  }
+  calculateMetrics(){
+
   }
 }
