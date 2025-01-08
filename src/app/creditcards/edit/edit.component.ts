@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreditCard } from '../../models/credit-card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreditcardsService } from '../../services/creditcards.service';
+import { Subject, takeUntil } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { validateVerticalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-edit',
@@ -11,10 +14,13 @@ import { CreditcardsService } from '../../services/creditcards.service';
 })
 export class EditComponent {
   editCreditCardForm!: FormGroup;
+  private destory$: Subject<void> = new Subject<void>();
+
 
   creditCardData:CreditCard | null =null;
   constructor(private formBuilder:FormBuilder,
     private route:ActivatedRoute,
+    private matSnackBar: MatSnackBar,
     private creditCardsService:CreditcardsService)
     {
       this.editCreditCardForm = this.formBuilder.group({
@@ -28,15 +34,18 @@ export class EditComponent {
         recommendedScore:['',Validators.required],
         annualFee:['',Validators.required],
         termsAndConditions:['',Validators.required],
-        // createDate:['',Validators.required],
-        // updateDate:['',Validators.required],
+        createDate:['',Validators.required],
+        updateDate:['',Validators.required],
       });
     }
     ngOnInit(){
       const id = parseInt(this.route.snapshot.paramMap.get("id") || '');
       if(id !==0)
       {
-        this.creditCardsService.getCreditCardById(id).subscribe(data=>{
+        this.creditCardsService.getCreditCardById(id)
+        .pipe(takeUntil(this.destory$))
+        
+        .subscribe(data=>{
           this.creditCardData = data;
 
           this,this.editCreditCardForm.patchValue(this.creditCardData);
@@ -49,7 +58,20 @@ export class EditComponent {
      if(this.editCreditCardForm.valid){
         const updatedFormDate: CreditCard = this.editCreditCardForm.value;
         console.log(updatedFormDate);
-        this.creditCardsService.updateCreditCard(updatedFormDate);
+        this.creditCardsService.updateCreditCard(updatedFormDate)
+        .pipe(takeUntil(this.destory$))
+        .subscribe(()=>{
+          this.showSuccessMessage("Credit Card Update Successfully ")
+        })
      }
+    }
+    showSuccessMessage(message: string){
+      this.matSnackBar.open(message ,'close',{
+        duration:3000,
+      })
+    }
+    ngOnDestory(){
+      this.destory$.next();
+      this.destory$.complete();
     }
 }

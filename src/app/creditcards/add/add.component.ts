@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CreditCard } from '../../models/credit-card';
 import { CreditcardsService } from '../../services/creditcards.service';
 import { Route, Router } from '@angular/router';
+import { Subscriber, Subscription, Unsubscribable } from 'rxjs';
 
 @Component({
   selector: 'app-add',
@@ -10,6 +11,7 @@ import { Route, Router } from '@angular/router';
 })
 export class AddComponent {
 
+  private subcription: Subscription | undefined;
   constructor( private creditcardsService:CreditcardsService,
     private router:Router ){
     
@@ -31,13 +33,26 @@ export class AddComponent {
     updateDate: Date()
 
   };
-
+  creditCards:CreditCard[]=[];
 
   saveCreditCard(){
-    console.log("form Submitted");
-    this.creditcardsService.createCreditCard(this.newCreditCard).subscribe(data=>{
-      alert("Create Card add");
-      this.router.navigate(['creditcards']);
-    })
+    this.creditcardsService.getCreditCards().subscribe((data:CreditCard[])=>{
+      this.creditCards = data;
+      this.newCreditCard.id=this.creditCards.length+1;
+      this.subcription= this.creditcardsService.createCreditCard(this.newCreditCard).subscribe(data=>{
+        alert("Create Card add");
+        this.router.navigate(['creditcards']);
+      })
+    });
+ 
+  
+
+
+ 
+  }
+  ngOnDestroy(){
+    if(this.subcription){
+      this.subcription.unsubscribe();
+    }
   }
 }

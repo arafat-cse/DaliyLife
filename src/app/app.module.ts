@@ -29,7 +29,7 @@ import {MatListModule} from '@angular/material/list';
     BrowserAnimationsModule,
     HttpClientModule,
     MatListModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
